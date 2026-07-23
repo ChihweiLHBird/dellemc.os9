@@ -132,7 +132,6 @@ except ImportError:
 from ansible.module_utils.basic import AnsibleModule
 from ansible_collections.dellemc.os9.plugins.module_utils.network.os9 import run_commands
 from ansible_collections.dellemc.os9.plugins.module_utils.network.os9 import os9_argument_spec, check_args
-from ansible.module_utils.six import iteritems
 
 
 class FactsBase(object):
@@ -564,7 +563,7 @@ def main():
         facts.update(inst.facts)
 
     ansible_facts = dict()
-    for key, value in iteritems(facts):
+    for key, value in facts.items():
         key = 'ansible_net_%s' % key
         ansible_facts[key] = value
 

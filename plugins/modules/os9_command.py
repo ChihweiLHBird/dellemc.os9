@@ -134,12 +134,11 @@ from ansible_collections.dellemc.os9.plugins.module_utils.network.os9 import run
 from ansible_collections.dellemc.os9.plugins.module_utils.network.os9 import os9_argument_spec, check_args
 from ansible_collections.ansible.netcommon.plugins.module_utils.network.common.utils import ComplexList
 from ansible_collections.ansible.netcommon.plugins.module_utils.network.common.parsing import Conditional
-from ansible.module_utils.six import string_types
 
 
 def to_lines(stdout):
     for item in stdout:
-        if isinstance(item, string_types):
+        if isinstance(item, str):
             item = str(item).split('\n')
         yield item
 
